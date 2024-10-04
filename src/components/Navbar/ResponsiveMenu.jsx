@@ -1,9 +1,33 @@
 import React from "react";
 import { FaUserCircle } from "react-icons/fa";
+// import { Navlinks } from "./Navbar";
+import { Link } from "react-router-dom";
+import { FaCartPlus } from "react-icons/fa";
 
-import { Navlinks } from "./Navbar";
+export const Navlinks = [
+  {
+    id: 1,
+    name: "HOME",
+    link: "/#",
+  },
+  {
+    id: 2,
+    name: "CARS",
+    link: "/Cars",
+  },
+  {
+    id: 3,
+    name: "ABOUT",
+    link: "/#about",
+  },
+  {
+    id: 5,
+    name: "Cart",
+    link: "/Cart",
+  },
+];
 
-const ResponsiveMenu = ({ showMenu }) => {
+const ResponsiveMenu = ({ showMenu, cartCount }) => {
   console.log("showMenu", showMenu);
   return (
     <div
@@ -20,21 +44,27 @@ const ResponsiveMenu = ({ showMenu }) => {
           </div>
         </div>
         <nav className="mt-12">
-          <ul className="space-y-4 text-xl">
-            {Navlinks.map((data) => (
-              <li>
-                <a href={data.link} className="mb-5 inline-block">
-                  {data.name}
-                </a>
+          {/* className="mb-5 inline-block" */}
+          <ul className="space-y-4 text-lg">
+            {Navlinks.map(({ id, name, link }) => (
+              <li className="py-4 ">
+                <Link to={link} className=" inline-block">
+                  {name === "Cart" ? (
+                    <div className="flex items-center">
+                      <FaCartPlus className="mr-1" />
+                      <span>({cartCount})</span>
+                    </div>
+                  ) : (
+                    name
+                  )}
+                </Link>
               </li>
             ))}
           </ul>
         </nav>
       </div>
       <div className="footer">
-        <h1>
-          Made with ❤ by our group{" "}
-        </h1>
+        <h1>Made with ❤ by our group </h1>
       </div>
     </div>
   );

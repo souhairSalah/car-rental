@@ -108,7 +108,7 @@ const Navbar = ({ theme, setTheme,  cartCount }) => {
           </div>
         </div>
       </div>
-      <ResponsiveMenu showMenu={showMenu} />
+      <ResponsiveMenu showMenu={showMenu} cartCount={cartCount}/>
     </div>
   );
 };
